@@ -1,71 +1,97 @@
 <section class="h-screen grid text-center" id="about">
   <div class="pt-16 prose prose-invert mx-auto">
-    <h1>About</h1>
+    <h1>About Me</h1>
     <p>
       I architect high-performance backend solutions, while crafting intuitive
       UIs with my dual expertise in RESTful APIs and modern frontend development
-      allows me to bridge the gap between system reliability and user
-      experience.
+      allows me to bridge the gap between system reliability and user experience
     </p>
     <p>
       Currently expanding my toolkit for serverless architectures and optimizing
       full-stack workflows. Passionate about clean code, scalable databases, and
-      responsive interfaces that work together seamlessly.
+      responsive interfaces that work together seamlessly
     </p>
   </div>
   <div class="pt-16">
     <div class="prose prose-invert mx-auto">
       <h1>Skills</h1>
     </div>
-    <div class="overflow-hidden relative mx-auto w-2/3 pt-16">
-      <div class="flex justify-center items-center gap-12 anima">
+    <div class="wrapper">
+      <div class="skill" style="--n:1">
         <img src="express.svg" alt="Express" />
+      </div>
+      <div class="skill" style="--n:2">
         <img src="postgresql.svg" alt="PostgreSQL" />
+      </div>
+      <div class="skill" style="--n:3">
         <img src="tailwindcss.png" alt="Tailwind CSS" />
+      </div>
+      <div class="skill" style="--n:4">
         <img src="django.png" alt="Django" />
-        <img src="react.png" alt="React" />
+      </div>
+      <div class="skill" style="--n:5"><img src="react.png" alt="React" /></div>
+      <div class="skill" style="--n:6">
         <img src="javascript.png" alt="JavaScript" />
+      </div>
+      <div class="skill" style="--n:7">
         <img src="typescript.png" alt="TypeScript" />
+      </div>
+      <div class="skill" style="--n:8">
         <img src="node.png" alt="Node.js" />
+      </div>
+      <div class="skill" style="--n:9">
         <img src="next-js.png" alt="Next.js" />
+      </div>
+      <div class="skill" style="--n:10">
         <img src="firebase.png" alt="Firebase" />
-        <img src="docker.png" alt="Docker" />
-        <img src="express.svg" alt="Express" />
-
-        <!-- SECOND TRACK -->
-
-        <img src="postgresql.svg" alt="PostgreSQL" />
-        <img src="tailwindcss.png" alt="Tailwind CSS" />
-        <img src="django.png" alt="Django" />
-        <img src="react.png" alt="React" />
-        <img src="javascript.png" alt="JavaScript" />
-        <img src="typescript.png" alt="TypeScript" />
-        <img src="node.png" alt="Node.js" />
-        <img src="next-js.png" alt="Next.js" />
-        <img src="firebase.png" alt="Firebase" />
+      </div>
+      <div class="skill" style="--n:11">
         <img src="docker.png" alt="Docker" />
       </div>
     </div>
   </div>
 </section>
-
 <style>
-  .anima {
-    animation: anima 10s both infinite;
-    animation-direction: alternate;
+  .wrapper {
+    --animation-duration: 30s;
+    --total-items: 11;
+    width: 90%;
+    max-width: 1536px;
+    margin-inline: auto;
+    position: relative;
+    height: 100px;
+    margin-top: 5rem;
+    overflow: hidden;
+    mask-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 1) 10%,
+      rgba(0, 0, 0, 1) 80%,
+      rgba(0, 0, 0, 0)
+    );
   }
 
-  .anima > img {
-    width: 100px;
-    align-items: center;
+  div > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  @keyframes scrollleft {
+    to {
+      left: -200px;
+    }
   }
 
-  @keyframes anima {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
+  .skill {
+    width: 200px;
+    height: 100px;
+    margin: auto 0;
+    position: absolute;
+    left: calc(200px * var(--total-items));
+    animation: scrollleft var(--animation-duration) linear infinite;
+    animation-delay: calc(
+      var(--animation-duration) / var(--total-items) *
+        (var(--total-items) - var(--n)) * -1
+    );
   }
 </style>
