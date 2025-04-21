@@ -5,11 +5,11 @@
       "name": "widvu-portfolio",
       "dependencies": {
         "@tailwindcss/vite": "^4.1.4",
-        "astro": "^5.7.4",
+        "astro": "5.7.4",
         "tailwindcss": "^4.1.4",
       },
       "devDependencies": {
-        "@tailwindcss/typography": "^0.5.16",
+        "@tailwindcss/typography": "0.5.16",
       },
     },
   },
