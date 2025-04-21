@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+body{
+    @apply text-white font-serif;
+    background-color: #1A1A1A ;
+    background-image: url('/bg.png');
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

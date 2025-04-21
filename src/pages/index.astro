@@ -1,16 +1,54 @@
 ---
-
+import Main from "../layout/main.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Main>
+  <main class="flex justify-center items-center w-full text-center">
+    <section
+      class="h-screen prose prose-invert relative w-full max-w-screen-md flex flex-col items-center justify-center"
+    >
+      <h1 class="text-6xl pt-16">William Vargas</h1>
+      <h2 class="write-machine">Backend Developer | Full-Stack Capabilities</h2>
+      <p>Building robust systems with elegant interfaces</p>
+      <video class="gif-container" src="/laptop.mp4" autoplay></video>
+
+      <blockquote class="mt-auto">
+        <p>First solve the problem, then write the code</p>
+      </blockquote>
+    </section>
+  </main>
+</Main>
+
+<style>
+  .gif-container {
+    margin: 0;
+    mix-blend-mode: multiply;
+    filter: contrast(1.5) brightness(1.2);
+  }
+
+  /* Máquina de escribir */
+  @keyframes typewriter {
+    from {
+      width: 0;
+    }
+    to {
+      width: 32ch;
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      border-right-color: transparent;
+    }
+  }
+
+  .write-machine {
+    display: inline-block;
+    overflow: hidden;
+    border-right: 2px solid white;
+    white-space: nowrap;
+    animation:
+      typewriter 4s steps(43) forwards,
+      blink 0.75s infinite;
+  }
+</style>
