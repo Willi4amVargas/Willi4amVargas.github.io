@@ -1,0 +1,56 @@
+<p class="flex items-center justify-center gap-2">
+  <button class="tooltip" id="copyToClipboardBtn">
+    williamvargas0907@gmail.com
+    <span class="tooltiptext" id="tootipEmailCopied"
+      >Email copied in clipboard</span
+    >
+  </button>
+</p>
+<script>
+  const copyButton = document.getElementById("copyToClipboardBtn");
+  if (copyButton) {
+    copyButton.addEventListener("click", () => {
+      navigator.clipboard.writeText("williamvargas0907@gmail.com");
+
+      const tooltip = document.getElementById("tootipEmailCopied");
+
+      if (tooltip) {
+        tooltip.style.visibility = "visible";
+        tooltip.style.opacity = "1";
+        tooltip.style.scale = "1";
+        setTimeout(() => {
+          tooltip.style.visibility = "hidden";
+          tooltip.style.opacity = "0";
+          tooltip.style.scale = "0.2";
+        }, 700);
+      }
+    });
+  }
+</script>
+
+<style>
+  /* Tooltip container */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    position: absolute;
+    visibility: hidden;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    padding: 5px 0;
+    border-radius: 6px;
+    width: 200px;
+    top: -5px;
+    left: 105%;
+    z-index: 1;
+    opacity: 1;
+    scale: 1;
+    transition: all 0.1s ease-in;
+  }
+</style>
