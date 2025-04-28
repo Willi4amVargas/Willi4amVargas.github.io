@@ -1,16 +1,47 @@
-<nav id="navbar" class="flex justify-between items-center pt-2 fixed w-full">
-  <a
-    href="/"
-    class="flex justify-center items-center h-10 w-10 border rounded-full hover:bg-gray-200/10 transition duration-300 ease-in-out hover:text-black hover:border-black ml-4"
-  >
-    <span
-      class="flex justify-center items-center border-2 hover:border-black border-white w-full h-full rounded-full font-extrabold font-sans italic transition duration-300 ease-in-out"
+---
+interface Props {
+  simple: boolean;
+}
+
+const { simple } = Astro.props;
+---
+
+{
+  simple ? (
+    <nav
+      id="navbar"
+      class="flex justify-between items-center pt-2 fixed w-full"
     >
-      W
-    </span>
-  </a>
-  <ul class="flex gap-4 my-auto pr-10">
-    <li><a href="#about">About Me</a></li>
-    <li><a href="#">Experience</a></li>
-  </ul>
-</nav>
+      <a
+        href="/"
+        class="flex justify-center items-center h-10 w-10 border rounded-full hover:bg-gray-200/10 transition duration-300 ease-in-out hover:text-black hover:border-black ml-4"
+      >
+        <span class="flex justify-center items-center border-2 hover:border-black border-white w-full h-full rounded-full font-extrabold font-sans italic transition duration-300 ease-in-out">
+          W
+        </span>
+      </a>
+    </nav>
+  ) : (
+    <nav
+      id="navbar"
+      class="flex justify-between items-center pt-2 fixed w-full"
+    >
+      <a
+        href="#home"
+        class="flex justify-center items-center h-10 w-10 border rounded-full hover:bg-gray-200/10 transition duration-300 ease-in-out hover:text-black hover:border-black ml-4"
+      >
+        <span class="flex justify-center items-center border-2 hover:border-black border-white w-full h-full rounded-full font-extrabold font-sans italic transition duration-300 ease-in-out">
+          W
+        </span>
+      </a>
+      <ul class="flex gap-4 my-auto pr-10">
+        <li>
+          <a href="#about">About Me</a>
+        </li>
+        <li>
+          <a href="#experiences">Experience</a>
+        </li>
+      </ul>
+    </nav>
+  )
+}

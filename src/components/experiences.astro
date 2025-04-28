@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+
+const experiences = await getCollection("experiences");
+---
+
+<div
+  class="h-screen min-w-screen text-center prose prose-invert prose-a:no-underline"
+  id="experiences"
+>
+  <h1 class="pt-8">Experiences</h1>
+  <div class="grid grid-cols-3 gap-4 justify-items-center mx-10">
+    {
+      experiences.map((exp) => {
+        return (
+          <a
+            href={"experiences/" + exp.slug}
+            class="flex flex-col items-center justify-center border-2 border-white rounded-lg p-4 cursor-pointer transition-all duration-300 ease-in-out hover:bg-gray-300/10 hover:scale-105"
+          >
+            <h3 transition:name={exp.slug + "-title"} transition:animate="slide">{exp.data.title}</h3>
+            <p class="text-gray-400">{exp.data.description}</p>
+            <p class="grid grid-cols-3 gap-1">
+              {exp.data.tecnologies.map((tec) => (
+                <i>{tec}</i>
+              ))}
+            </p>
+            <div class="flex justify-evenly w-full">
+              {exp.data.images?.map((img) => {
+                return <img src={img} class="w-10" />;
+              })}
+            </div>
+          </a>
+        );
+      })
+    }
+  </div>
+</div>

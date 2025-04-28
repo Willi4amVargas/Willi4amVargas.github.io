@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+import Main from "../../layout/main.astro";
+import { render } from "astro:content";
+
+export async function getStaticPaths() {
+  const experiences = await getCollection("experiences");
+  return experiences.map((exp) => ({
+    params: { id: exp.slug },
+    props: { exp },
+  }));
+}
+
+const { exp } = Astro.props;
+const { Content } = await render(exp);
+const { slug } = exp;
+const { title } = exp.data;
+---
+
+<Main title={title} simple={true}>
+  <div class="min-w-screen text-center prose prose-invert py-16 px-10">
+    <h3 transition:name={slug + "-title"} transition:animate="slide">{title}</h3>
+    <Content />
+  </div>
+</Main
