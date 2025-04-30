@@ -5,19 +5,24 @@ const experiences = await getCollection("experiences");
 ---
 
 <div
-  class="h-screen min-w-screen text-center prose prose-invert prose-a:no-underline"
+  class="h-screen max-w-[90%] mx-auto text-center prose prose-invert prose-a:no-underline"
   id="experiences"
 >
   <h1 class="pt-8">Experiences</h1>
-  <div class="grid grid-cols-3 gap-4 justify-items-center mx-10">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
     {
       experiences.map((exp) => {
         return (
           <a
             href={"experiences/" + exp.slug}
-            class="flex flex-col items-center justify-center border-2 border-white rounded-lg p-4 cursor-pointer transition-all duration-300 ease-in-out hover:bg-gray-300/10 hover:scale-105"
+            class="flex flex-col w-full h-full items-center justify-center border-2 border-white rounded-lg p-4 cursor-pointer transition-all duration-300 ease-in-out hover:bg-gray-300/10 hover:scale-105"
+            transition:name={exp.slug + "-title"}
+            transition:animate="slide"
           >
-            <h3 transition:name={exp.slug + "-title"} transition:animate="slide">{exp.data.title}</h3>
+            <h3
+            >
+              {exp.data.title}
+            </h3>
             <p class="text-gray-400">{exp.data.description}</p>
             <p class="grid grid-cols-3 gap-1">
               {exp.data.tecnologies.map((tec) => (

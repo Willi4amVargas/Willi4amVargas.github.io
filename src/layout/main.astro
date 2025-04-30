@@ -6,9 +6,10 @@ import { ClientRouter } from "astro:transitions";
 interface Props {
   title:string;
   simple:boolean;
+  subUrl?:string;
 }
 
-const { title, simple } = Astro.props;
+const { title, simple, subUrl } = Astro.props;
 ---
 
 <html lang="en">
@@ -22,7 +23,7 @@ const { title, simple } = Astro.props;
   </head>
   <body>
     <header>
-      <Navbar simple={simple}/>
+      <Navbar simple={simple} subUrl={subUrl}/>
     </header>
     <slot />
   </body>

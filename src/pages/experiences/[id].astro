@@ -2,6 +2,11 @@
 import { getCollection } from "astro:content";
 import Main from "../../layout/main.astro";
 import { render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  exp: CollectionEntry<"experiences">;
+}
 
 export async function getStaticPaths() {
   const experiences = await getCollection("experiences");
@@ -17,7 +22,7 @@ const { slug } = exp;
 const { title } = exp.data;
 ---
 
-<Main title={title} simple={true}>
+<Main title={title} simple={true} subUrl="#experiences">
   <div class="min-w-screen text-center prose prose-invert py-16 px-10">
     <h3 transition:name={slug + "-title"} transition:animate="slide">{title}</h3>
     <Content />
