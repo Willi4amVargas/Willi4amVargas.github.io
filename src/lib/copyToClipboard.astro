@@ -1,11 +1,12 @@
 <p class="flex items-center justify-center gap-2">
-  <button class="tooltip" id="copyToClipboardBtn">
+  <button class="tooltip group relative" id="copyToClipboardBtn">
     williamvargas0907@gmail.com
-    <span class="tooltiptext" id="tootipEmailCopied"
-      >Email copied in clipboard</span
-    >
+    <span class="tooltiptext" id="tootipEmailCopied">
+      Email copied in clipboard
+    </span>
   </button>
 </p>
+
 <script>
   const copyButton = document.getElementById("copyToClipboardBtn");
   if (copyButton) {
@@ -13,44 +14,73 @@
       navigator.clipboard.writeText("williamvargas0907@gmail.com");
 
       const tooltip = document.getElementById("tootipEmailCopied");
-
       if (tooltip) {
-        tooltip.style.visibility = "visible";
-        tooltip.style.opacity = "1";
-        tooltip.style.scale = "1";
+        tooltip.classList.add("tooltip-visible");
         setTimeout(() => {
-          tooltip.style.visibility = "hidden";
-          tooltip.style.opacity = "0";
-          tooltip.style.scale = "0.2";
-        }, 700);
+          tooltip.classList.remove("tooltip-visible");
+        }, 2000);
       }
     });
   }
 </script>
 
 <style>
-  /* Tooltip container */
   .tooltip {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s;
+  }
+  .tooltip:hover {
+    background-color: rgba(255, 255, 255, 0.1);
   }
 
-  /* Tooltip text */
   .tooltip .tooltiptext {
     position: absolute;
     visibility: hidden;
+    opacity: 0;
     text-align: center;
     background-color: rgb(255, 255, 255);
     color: #000000;
-    padding: 5px 0;
-    border-radius: 6px;
-    width: 200px;
-    top: -5px;
-    left: 105%;
-    z-index: 1;
-    opacity: 1;
-    scale: 1;
-    transition: all 0.1s ease-in;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    width: max-content;
+    max-width: 200px;
+    z-index: 50;
+    transition: all 0.2s ease;
+    font-size: 0.875rem;
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .tooltip .tooltiptext {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(0.5rem);
+  }
+
+  @media (min-width: 640px) {
+    .tooltip .tooltiptext {
+      bottom: auto;
+      top: 50%;
+      left: 100%;
+      transform: translateX(0.5rem) translateY(-50%);
+    }
+  }
+
+  .tooltip-visible {
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translateX(-50%) translateY(-1rem) !important;
+  }
+
+  @media (min-width: 640px) {
+    .tooltip-visible {
+      transform: translateX(0.75rem) translateY(-50%) !important;
+    }
   }
 </style>

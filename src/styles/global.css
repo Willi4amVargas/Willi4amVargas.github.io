@@ -9,7 +9,7 @@ body {
   @apply text-white font-serif;
   background-color: #1a1a1a;
   background-image: url("/bg.png");
-  background-position: 0 0;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }

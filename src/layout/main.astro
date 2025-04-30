@@ -25,6 +25,8 @@ const { title, simple, subUrl } = Astro.props;
     <header>
       <Navbar simple={simple} subUrl={subUrl}/>
     </header>
-    <slot />
+    <main>
+      <slot />
+    </main>
   </body>
 </html>
