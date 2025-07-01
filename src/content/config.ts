@@ -5,9 +5,10 @@ const experiences = defineCollection({
     schema: z.object({
         title : z.string(),
         description : z.string(),
-        tecnologies : z.array(z.string()),
-        subtecnologies : z.array(z.string()).optional(),
-        images : z.array(z.string()).optional()
+        technologies : z.array(z.string()),
+        technologies_icons : z.array(z.string()).optional(),
+        images : z.array(z.string()).optional(),
+        date : z.string().optional()
     })
 })
 
