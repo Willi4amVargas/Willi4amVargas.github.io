@@ -21,7 +21,10 @@ const experiences = await getCollection("experiences");
 
             {/*TITULO Y FECHA */}
             <div class="col-span-4 flex">
-              <a href={`/experiences/${exp.slug}`}>
+              <a
+                href={`/experiences/${exp.slug}`}
+                class="hover:scale-105 hover:text-slate-400 transition-all ease-in-out hover:translate-y-[-1px]"
+              >
                 <span
                   class="px-4 text-xl"
                   transition:name={exp.slug + "-title"}
@@ -50,12 +53,12 @@ const experiences = await getCollection("experiences");
                 </div>
                 <div class="col-span-6">
                   <div class="flex justify-evenly">
-                  {exp.data.technologies_icons &&
-                    exp.data.technologies_icons.map((e) => (
-                      <div class="w-13 my-auto">
-                        <img src={e}/>
-                      </div>
-                    ))}
+                    {exp.data.technologies_icons &&
+                      exp.data.technologies_icons.map((e) => (
+                        <div class="w-13 my-auto">
+                          <img src={e} />
+                        </div>
+                      ))}
                   </div>
                 </div>
               </div>
