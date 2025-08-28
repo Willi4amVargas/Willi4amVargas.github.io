@@ -46,10 +46,12 @@ const experiences = await getCollection("experiences");
             <div class="col-span-6 text-slate-300">
               <div class="grid grid-cols-6">
                 <div class="col-span-6">{exp.data.description}</div>
-                <div class="col-span-6 text-sm pt-5 text-slate-200/50">
-                  {exp.data.technologies.map((e) => {
-                    return <span class="px-5 italic">{e}</span>;
-                  })}
+                <div class="col-span-6 text-[0.8rem] pt-5 text-slate-200/50">
+                  <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
+                    {exp.data.technologies.map((e) => {
+                      return <span class=" px-5 italic">{e}</span>;
+                    })}
+                  </div>
                 </div>
                 <div class="col-span-6">
                   <div class="flex justify-evenly">

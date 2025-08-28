@@ -17,6 +17,7 @@ import CopyToClipboard from "../lib/copyToClipboard.astro";
     <div class="flex items-center justify-center gap-4 my-auto text-white">
       <a
         href="mailto:williamvargas0907@gmail.com?subject=Collaboration%20Inquiry&body=Hi%20William,%0D%0A%0D%0AI%20would%20like%20to%20discuss..."
+        target="_blank"
       >
         <img src="/icons-contact/email.svg" alt="Email" class="w-16" />
       </a>
@@ -34,51 +35,70 @@ import CopyToClipboard from "../lib/copyToClipboard.astro";
         <img src="/icons-contact/github.svg" alt="GitHub" class="w-16" />
       </a>
     </div>
-    <a
-      href="/ResumeWilliamVargas2025.pdf"
-      target="_blank"
-      class=" flex no-underline"
-    >
+    <div class="grid grid-cols-3 gap-4 my-8 text-white">
       <span class="my-auto px-2">Resume</span>
-      <img
-        src="/icons-contact/resume.svg"
-        alt="resume-icon"
-        class="w-10 my-auto"
-      />
-    </a>
-    <blockquote>
-      <p>First solve the problem, then write the code</p>
-    </blockquote>
+      <a
+        target="_blank"
+        class="relative no-underline"
+        href="/CurriculumWilliamVargas.pdf"
+      >
+        <img
+          src="/icons-contact/resume.svg"
+          alt="resume-icon"
+          class="w-10 my-auto"
+        />
+        <span class="absolute top-1/2 left-2 text-white text-xs w-5 h-5"
+          >ES</span
+        >
+      </a>
+      <a
+        href="/ResumeWilliamVargas.pdf"
+        target="_blank"
+        class="relative no-underline"
+      >
+        <img
+          src="/icons-contact/resume.svg"
+          alt="resume-icon"
+          class="w-10 my-auto"
+        />
+        <span class="absolute top-1/2 left-2 text-white text-xs w-5 h-5"
+          >EN</span
+        >
+      </a>
+      <blockquote class="col-span-3 italic text-sm opacity-70 mt-4">
+        <p>First solve the problem, then write the code</p>
+      </blockquote>
+    </div>
+    <style>
+      a > img {
+        filter: invert(1);
+      }
+      /* Máquina de escribir */
+      @keyframes typewriter {
+        from {
+          width: 0%;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink {
+        50% {
+          border-right-color: transparent;
+        }
+      }
+
+      .write-machine {
+        display: inline-block;
+        overflow: hidden;
+        border-right: 2px solid white;
+        white-space: nowrap;
+        text-align: center;
+        animation:
+          typewriter 4s steps(31) forwards,
+          blink 0.75s infinite;
+      }
+    </style>
   </section>
 </main>
-<style>
-  a > img {
-    filter: invert(1);
-  }
-  /* Máquina de escribir */
-  @keyframes typewriter {
-    from {
-      width: 0%;
-    }
-    to {
-      width: 100%;
-    }
-  }
-
-  @keyframes blink {
-    50% {
-      border-right-color: transparent;
-    }
-  }
-
-  .write-machine {
-    display: inline-block;
-    overflow: hidden;
-    border-right: 2px solid white;
-    white-space: nowrap;
-    text-align: center;
-    animation:
-      typewriter 4s steps(31) forwards,
-      blink 0.75s infinite;
-  }
-</style>
