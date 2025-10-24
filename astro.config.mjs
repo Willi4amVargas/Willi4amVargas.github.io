@@ -8,5 +8,5 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  site: 'https://Willi4amVargas.github.io',
+  site: 'https://widvu.com',
 });
