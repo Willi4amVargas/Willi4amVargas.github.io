@@ -5,69 +5,61 @@ const experiences = await getCollection("experiences");
 ---
 
 <div
-  class="min-h-screen max-w-[90%] mx-auto text-center prose prose-invert prose-a:no-underline"
+  class="min-h-screen max-w-5xl mx-auto py-20 px-6 lg:px-8"
   id="experiences"
 >
-  <h1 class="pt-8">Experiences</h1>
-  {
-    experiences.map((exp) => {
-      return (
-        <div class="xl:w-1/2 w-full mb-8 mx-auto">
-          <div class=" grid grid-cols-7 gap-y-4 ">
-            {/* CIRCULO */}
-            <div class="col-span-1 flex justify-center">
-              <div class="rounded-full bg-white h-[15px] w-[15px] my-auto" />
+  <h1 class="text-4xl md:text-5xl font-bold text-white mb-16 text-center">Work Experience</h1>
+  <div class="space-y-12">
+    {
+      experiences.map((exp) => {
+        return (
+          <div class="group relative grid grid-cols-1 md:grid-cols-12 gap-8 p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-[1.01] hover:shadow-2xl hover:shadow-white/5">
+            {/* DATE */}
+            <div class="md:col-span-3 text-slate-400 font-medium pt-1">
+              {exp.data.date ? exp.data.date : "Project"}
             </div>
 
-            {/*TITULO Y FECHA */}
-            <div class="col-span-4 flex">
+            {/* CONTENT */}
+            <div class="md:col-span-9">
               <a
                 href={`/experiences/${exp.slug}`}
-                class="hover:scale-105 hover:text-slate-400 transition-all ease-in-out hover:translate-y-[-1px]"
+                class="inline-block group-hover:text-blue-400 transition-colors"
               >
-                <span
-                  class="px-4 text-xl"
+                <h2
+                  class="text-2xl font-bold text-white mb-4"
                   transition:name={exp.slug + "-title"}
-                  transition:animate="slide"
                 >
                   {exp.data.title}
-                </span>
+                </h2>
               </a>
-            </div>
-            <span class="col-span-2 text-slate-200/50">
-              {exp.data.date ? exp.data.date : ""}
-            </span>
+              
+              <p class="text-slate-300 mb-6 leading-relaxed">
+                {exp.data.description}
+              </p>
 
-            {/* BORDER/BARRA */}
-            <div class="col-span-1 flex justify-center">
-              <div class="border-l-2 border-white h-full" />
-            </div>
-            {/*CONTENIDO */}
-            <div class="col-span-6 text-slate-300">
-              <div class="grid grid-cols-6">
-                <div class="col-span-6">{exp.data.description}</div>
-                <div class="col-span-6 text-[0.8rem] pt-5 text-slate-200/50">
-                  <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
-                    {exp.data.technologies.map((e) => {
-                      return <span class=" px-5 italic">{e}</span>;
-                    })}
-                  </div>
-                </div>
-                <div class="col-span-6">
-                  <div class="flex justify-evenly">
-                    {exp.data.technologies_icons &&
-                      exp.data.technologies_icons.map((e) => (
-                        <div class="w-13 my-auto">
-                          <img src={e} />
-                        </div>
-                      ))}
-                  </div>
-                </div>
+              <div class="flex flex-wrap gap-3 mb-6">
+                {exp.data.technologies.map((tech) => (
+                  <span class="px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-slate-400 border border-white/5">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <div class="flex gap-4">
+                {exp.data.technologies_icons &&
+                  exp.data.technologies_icons.map((icon) => (
+                    <div class="w-8 h-8 bg-white/5 p-1.5 rounded-lg border border-white/10">
+                      <img src={icon} class="w-full h-full object-contain" />
+                    </div>
+                  ))}
               </div>
             </div>
+            
+            {/* Link Overlay */}
+            <a href={`/experiences/${exp.slug}`} class="absolute inset-0 z-0" aria-label={`View ${exp.data.title}`}></a>
           </div>
-        </div>
-      );
-    })
-  }
+        );
+      })
+    }
+  </div>
 </div>

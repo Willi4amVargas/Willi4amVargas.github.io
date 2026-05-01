@@ -19,12 +19,53 @@ export async function getStaticPaths() {
 const { exp } = Astro.props;
 const { Content } = await render(exp);
 const { slug } = exp;
-const { title } = exp.data;
+const { title, description, technologies_icons } = exp.data;
 ---
 
 <Main title={title} simple={true} subUrl="#experiences">
-  <div class="min-w-screen text-center prose prose-invert py-16 px-10">
-    <h3 transition:name={slug + "-title"} transition:animate="slide"></h3>
-    <Content />
+  <div class="max-w-4xl mx-auto py-20 px-6 lg:px-8">
+    <div class="bg-gray-800/30 backdrop-blur-sm rounded-3xl border border-white/10 p-8 md:p-12 shadow-2xl">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 border-b border-white/10 pb-8">
+        <h1 
+          class="text-3xl md:text-5xl font-bold text-white leading-tight" 
+          transition:name={slug + "-title"}
+        >
+          {title}
+        </h1>
+        <div class="flex gap-4 flex-wrap">
+          {technologies_icons && technologies_icons.map((icon) => (
+            <div class="w-10 h-10 md:w-12 md:h-12 bg-white/5 p-2 rounded-xl border border-white/10 flex items-center justify-center">
+              <img src={icon} alt="tech icon" class="w-full h-full object-contain" />
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <p class="text-xl text-slate-300 mb-10 leading-relaxed italic">
+        {description}
+      </p>
+
+      <div class="prose prose-invert prose-lg max-w-none 
+        prose-headings:text-white prose-headings:font-bold prose-headings:mt-8 prose-headings:mb-4
+        prose-p:text-slate-300 prose-p:leading-relaxed
+        prose-li:text-slate-300
+        prose-a:text-blue-400 hover:prose-a:text-blue-300 prose-a:transition-colors
+        prose-strong:text-white
+        prose-img:rounded-2xl prose-img:shadow-lg">
+        <Content />
+      </div>
+    </div>
+    
+    <div class="mt-12 text-center">
+      <a 
+        href="/#experiences" 
+        class="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-lg"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back to Experiences
+      </a>
+    </div>
   </div>
 </Main>
